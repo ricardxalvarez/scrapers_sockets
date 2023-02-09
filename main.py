@@ -25,7 +25,7 @@ def func(data):
     facebook.scrape_followers(data)
     facebook.send_messages(data)
     facebook.quit()
-    disconnect(request.sid)
+    print('finished')
 
 
 @socketio.on('auth_instagram')
@@ -37,7 +37,6 @@ def func(data):
         instagram.scrape_following(data)
         instagram.send_messages(data)
         instagram.quit()
-        disconnect(request.sid)
     print('finished')
 # @socketio.on('scrape_friends_facebook')
 # def func(data):
@@ -50,36 +49,6 @@ def func(data):
     if session["instagram"]:
         instagram = session["instagram"]
         instagram.validate_auth(data)
-
-
-@socketio.on('auth_tiktok')
-def func(data):
-    print(data)
-    tiktok = TiktokHandler(request.sid, emit)
-    session["tiktok"] = tiktok
-    tiktok.auth(data)
-
-
-@socketio.on('validate_auth_tiktok_scroll')
-def func(scroll_x):
-    if (session["tiktok"]):
-        print(scroll_x)
-        tiktok = session["tiktok"]
-        tiktok.validate_auth_scroll(scroll_x)
-
-
-@socketio.on('validate_auth_tiktok_scroll_check')
-def func(data):
-    if (session["tiktok"]):
-        tiktok = session["tiktok"]
-        tiktok.validate_auth_scroll_check()
-
-
-@socketio.on('validate_auth_tiktok_drop')
-def func(data):
-    if session["tiktok"]:
-        tiktok = session["tiktok"]
-        tiktok.validate_auth_drop()
 
 
 if __name__ == '__main__':
