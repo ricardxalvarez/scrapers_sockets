@@ -85,11 +85,13 @@ class Facebook():
             except NoSuchElementException:
                 pass
 
-            emit("message", {"status": True, "content": "Successfully logged in"})
+            emit("message", {"status": True,
+                 "content": "Successfully logged in"})
 
             time.sleep(float(decimal.Decimal(random.randrange(5, 7))))
         except NoSuchElementException:
-            emit("message", {"status": False, "content": "Internal server error, please try again"})
+            emit("message", {
+                 "status": False, "content": "Internal server error, please try again"})
             self.quit()
 
     def scrape_friends(self):
@@ -122,7 +124,7 @@ class Facebook():
             while True:
                 try:
                     loops_count = loops_count + 1
-                    if loops_count % 5 == 0:
+                    if (loops_count % 5 == 0):
                         time.sleep(
                             float(decimal.Decimal(random.randrange(10, 17))))
                         loops_count = 0
@@ -169,7 +171,8 @@ class Facebook():
             time.sleep(float(decimal.Decimal(random.randrange(5, 7))))
             time.sleep(float(decimal.Decimal(random.randrange(5, 7))))
         except NoSuchElementException:
-            emit("message", {"status": False, "content": "Internal server error, please try again"})
+            emit("message", {
+                 "status": False, "content": "Internal server error, please try again"})
             self.quit()
 
     def scrape_followers(self):
@@ -192,7 +195,7 @@ class Facebook():
             while True:
                 try:
                     loops_count = loops_count + 1
-                    if loops_count % 5 == 0:
+                    if (loops_count % 5 == 0):
                         time.sleep(
                             float(decimal.Decimal(random.randrange(10, 17))))
                         loops_count = 0
@@ -234,7 +237,8 @@ class Facebook():
             time.sleep(float(decimal.Decimal(random.randrange(5, 7))))
             browser.refresh()
         except NoSuchElementException:
-            emit("message", {"status": True, "content": "Successfully logged in"})
+            emit("message", {"status": True,
+                 "content": "Successfully logged in"})
             self.quit()
 
     def send_messages(self, message_struc: str):
@@ -295,7 +299,8 @@ class Facebook():
                 self.users.__len__())})
             time.sleep(float(decimal.Decimal(random.randrange(5, 7))))
         except NoSuchElementException:
-            emit("message", {"status": False, "content": "Internal server error, please try again"})
+            emit("message", {
+                 "status": False, "content": "Internal server error, please try again"})
             self.quit()
 
     def quit(self):

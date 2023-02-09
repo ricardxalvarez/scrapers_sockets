@@ -181,7 +181,7 @@ class Instagram():
                 # scrolls down to the end
                 try:
                     loops_count = loops_count + 1
-                    if loops_count % 5 == 0:
+                    if (loops_count % 5 == 0):
                         time.sleep(
                             float(decimal.Decimal(random.randrange(10, 17))))
                         loops_count = 0
@@ -326,7 +326,7 @@ class Instagram():
                     # scrolls down to the end
                     try:
                         loops_count = loops_count + 1
-                        if loops_count % 5 == 0:
+                        if (loops_count % 5 == 0):
                             time.sleep(
                                 float(decimal.Decimal(random.randrange(10, 17))))
                             loops_count = 0
