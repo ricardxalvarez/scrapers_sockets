@@ -149,7 +149,6 @@ class Facebook():
                                 self.friends.add((name, id))
                         except NoSuchElementException:
                             continue
-                    print(self.friends)
                     if (friends_quantity <= friends_list.__len__()):
                         browser.execute_script(
                             "window.scrollTo(0, 0);")
@@ -221,7 +220,6 @@ class Facebook():
                                 self.followers.add((name, id))
                         except NoSuchElementException:
                             continue
-                    print(self.followers)
                     try:
                         photos = browser.find_element_by_xpath(
                             '/html/body/div[1]/div[1]/div[1]/div/div[3]/div/div/div/div[1]/div[1]/div/div/div[4]/div/div/div/div[2]/div/div/div/div')
@@ -264,10 +262,7 @@ class Facebook():
                 '/html/body/div[1]/div[1]/div[1]/div/div[2]/div[4]/div[2]/div/div/div[1]/div[1]/div/div/div/div/div/div/div[1]/div/div/div[2]/span/a').click()
 
             time.sleep(float(decimal.Decimal(random.randrange(13, 15))))
-            test_set = set()
-            test_set.add(('Ricardo Alvarez', '100086954400617'))
-            test_set.add(('Victoria Aguilar', '100081180675901'))
-            for receiver in test_set:
+            for receiver in self.users:
                 browser.get(
                     'https://www.facebook.com/messages/t/{}'.format(receiver[1]))
 

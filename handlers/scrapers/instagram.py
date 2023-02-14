@@ -397,8 +397,6 @@ class Instagram():
                                 continue
                         except NoSuchElementException or StaleElementReferenceException:
                             continue
-                    print(following_count)
-                    print(self.following)
 
                     # if this set is larger or equal than the followers quantity then will brake this loop
                     if (following_count <= self.following.__len__()):
@@ -429,8 +427,6 @@ class Instagram():
 
             for u in self.following:
                 self.users.add(u)
-
-            print(self.users)
 
             emit(
                 ("message", {"status": True, "content": "Sending messages to selected users"}))
@@ -463,10 +459,7 @@ class Instagram():
                             '/html/body/div[2]/div/div/div/div[1]/div/div/div/div[1]/div[1]/div/div[2]/div/section/div/div/div/div/div[1]/div[1]/div/div[3]/button').click()
 
                 time.sleep(float(decimal.Decimal(random.randrange(2, 3))))
-                test_users = set()
-                test_users.add('dorkcoon')
-                test_users.add('oriiicastillo')
-                for follower in test_users:
+                for follower in self.users:
                     time.sleep(float(decimal.Decimal(random.randrange(3, 5))))
                     # selects users search input
                     try:
