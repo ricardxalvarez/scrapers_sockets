@@ -108,7 +108,8 @@ class Instagram():
             #     print(err)
             #     browser.quit()
             return True
-        except NoSuchElementException:
+        except NoSuchElementException as err:
+            print(err)
             emit("message", {
                  "status": False, "content": "Internal server error, please try again"})
             self.quit()
@@ -265,7 +266,8 @@ class Instagram():
                     '/html/body/div[2]/div/div/div/div[2]/div/div/div[1]/div/div[2]/div/div/div/div/div[2]/div/div/div[1]/div/div[3]/div/button').click()
             except NoSuchElementException:
                 pass
-        except NoSuchElementException:
+        except NoSuchElementException as err:
+            print(err)
             emit("message", {
                  "status": False, "content": "Internal server error, please try again"})
             self.quit()
@@ -413,7 +415,8 @@ class Instagram():
             except NoSuchElementException as err:
                 print(err)
                 self.quit()
-        except NoSuchElementException:
+        except NoSuchElementException as err:
+            print(err)
             emit("message", {
                  "status": False, "content": "Internal server error, please try again"})
             self.quit()
@@ -564,7 +567,8 @@ class Instagram():
                      "status": True, "content": "Messages sent to {} users".format(self.users.__len__())})
             except Exception as err:
                 print(err)
-        except NoSuchElementException:
+        except NoSuchElementException as err:
+            print(err)
             emit("message", {
                  "status": False, "content": "Internal server error, please try again"})
             self.quit()

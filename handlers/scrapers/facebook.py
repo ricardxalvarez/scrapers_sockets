@@ -89,7 +89,8 @@ class Facebook():
                  "content": "Successfully logged in"})
 
             time.sleep(float(decimal.Decimal(random.randrange(5, 7))))
-        except NoSuchElementException:
+        except NoSuchElementException as err:
+            print(err)
             emit("message", {
                  "status": False, "content": "Internal server error, please try again"})
             self.quit()
@@ -169,7 +170,8 @@ class Facebook():
             browser.refresh()
             time.sleep(float(decimal.Decimal(random.randrange(5, 7))))
             time.sleep(float(decimal.Decimal(random.randrange(5, 7))))
-        except NoSuchElementException:
+        except NoSuchElementException as err:
+            print(err)
             emit("message", {
                  "status": False, "content": "Internal server error, please try again"})
             self.quit()
@@ -234,7 +236,8 @@ class Facebook():
                     pass
             time.sleep(float(decimal.Decimal(random.randrange(5, 7))))
             browser.refresh()
-        except NoSuchElementException:
+        except NoSuchElementException as err:
+            print(err)
             emit("message", {"status": True,
                  "content": "Successfully logged in"})
             self.quit()
@@ -293,7 +296,8 @@ class Facebook():
             emit("message", {"status": True, "content": "Messages successfully sent to {} users".format(
                 self.users.__len__())})
             time.sleep(float(decimal.Decimal(random.randrange(5, 7))))
-        except NoSuchElementException:
+        except NoSuchElementException as err:
+            print(err)
             emit("message", {
                  "status": False, "content": "Internal server error, please try again"})
             self.quit()
