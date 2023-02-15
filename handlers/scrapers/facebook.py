@@ -6,6 +6,12 @@ from selenium.webdriver.common.keys import Keys
 from selenium.common.exceptions import NoSuchElementException
 from selenium.common.exceptions import StaleElementReferenceException
 from flask_socketio import disconnect
+from dotenv import load_dotenv
+import os
+
+load_dotenv()
+
+development = os.environ['development']
 
 
 class Facebook():
@@ -93,7 +99,8 @@ class Facebook():
             print(err)
             emit("message", {
                  "status": False, "content": "Internal server error, please try again"})
-            self.quit()
+            if development:
+                self.quit()
 
     def scrape_friends(self):
         try:
@@ -174,7 +181,8 @@ class Facebook():
             print(err)
             emit("message", {
                  "status": False, "content": "Internal server error, please try again"})
-            self.quit()
+            if development:
+                self.quit()
 
     def scrape_followers(self):
         try:
@@ -240,7 +248,8 @@ class Facebook():
             print(err)
             emit("message", {"status": True,
                  "content": "Successfully logged in"})
-            self.quit()
+            if development:
+                self.quit()
 
     def send_messages(self, message_struc: str):
         try:
@@ -300,7 +309,8 @@ class Facebook():
             print(err)
             emit("message", {
                  "status": False, "content": "Internal server error, please try again"})
-            self.quit()
+            if development:
+                self.quit()
 
     def quit(self):
         self.browser.quit()

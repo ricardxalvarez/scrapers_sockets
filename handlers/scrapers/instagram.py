@@ -6,6 +6,12 @@ from selenium.webdriver.common.keys import Keys
 from selenium.common.exceptions import NoSuchElementException
 from selenium.common.exceptions import StaleElementReferenceException
 from flask_socketio import disconnect
+from dotenv import load_dotenv
+import os
+
+load_dotenv()
+
+development = os.environ['development']
 
 
 class Instagram():
@@ -112,7 +118,8 @@ class Instagram():
             print(err)
             emit("message", {
                  "status": False, "content": "Internal server error, please try again"})
-            self.quit()
+            if development:
+                self.quit()
 
     def validate_auth(self, code):
         browser = self.browser
@@ -270,7 +277,8 @@ class Instagram():
             print(err)
             emit("message", {
                  "status": False, "content": "Internal server error, please try again"})
-            self.quit()
+            if development:
+                self.quit()
 
     def add_users_to_set(self, list: set):
         for user in list:
@@ -571,7 +579,8 @@ class Instagram():
             print(err)
             emit("message", {
                  "status": False, "content": "Internal server error, please try again"})
-            self.quit()
+            if development:
+                self.quit()
 
     def quit(self):
         self.browser.quit()
