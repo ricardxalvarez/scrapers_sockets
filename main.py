@@ -3,12 +3,13 @@ from flask_socketio import SocketIO, emit, disconnect
 from handlers.facebook_handler import FacebookHandler
 from handlers.instagram_handler import InstagramHandler
 from engineio.payload import Payload
+from distutils.util import strtobool
 from dotenv import load_dotenv
 import os
 
 load_dotenv()
 
-development = bool(os.environ['development'])
+development = bool(strtobool(os.environ['development']))
 Payload.max_decode_packets = 500
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'Secret'

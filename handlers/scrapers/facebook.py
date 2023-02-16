@@ -7,11 +7,12 @@ from selenium.common.exceptions import NoSuchElementException
 from selenium.common.exceptions import StaleElementReferenceException
 from flask_socketio import disconnect
 from dotenv import load_dotenv
+from distutils.util import strtobool
 import os
 
 load_dotenv()
 
-development = bool(os.environ['development'])
+development = bool(strtobool(os.environ['development']))
 
 
 class Facebook():
