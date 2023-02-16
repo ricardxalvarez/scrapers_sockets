@@ -110,12 +110,7 @@ class Facebook():
             emit("message", {"status": True, "content": "Listing friends..."})
             browser.set_window_size(900, 700)
             time.sleep(float(decimal.Decimal(random.randrange(1, 2))))
-            try:
-                browser.find_element_by_xpath(
-                    '/html/body/div[1]/div[1]/div[1]/div/div[2]/div[4]/div[1]/span/div/div[1]/div').click()
-            except NoSuchElementException:
-                browser.find_element_by_xpath(
-                    '/html/body/div[1]/div/div[1]/div/div[2]/div[5]/div[1]/span/div/div[1]/div').click()
+
             time.sleep(float(decimal.Decimal(random.randrange(5, 7))))
             browser.get('https://www.facebook.com/me')
 
@@ -197,12 +192,7 @@ class Facebook():
             emit("message", {"status": True, "content": "Listing followers"})
             browser.set_window_size(900, 700)
             time.sleep(float(decimal.Decimal(random.randrange(4, 6))))
-            try:
-                browser.find_element_by_xpath(
-                    '/html/body/div[1]/div[1]/div[1]/div/div[2]/div[4]/div[1]/span/div/div[1]/div').click()
-            except NoSuchElementException:
-                browser.find_element_by_xpath(
-                    '/html/body/div[1]/div/div[1]/div/div[2]/div[5]/div[1]/span/div/div[1]/div').click()
+
             time.sleep(float(decimal.Decimal(random.randrange(5, 7))))
             browser.get('https://www.facebook.com/me')
             # browser.execute_script(
