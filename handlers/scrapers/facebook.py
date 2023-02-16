@@ -266,8 +266,13 @@ class Facebook():
                  "content": "Sending messages to all users listed"})
             browser.maximize_window()
             time.sleep(float(decimal.Decimal(random.randrange(5, 7))))
-            browser.find_element_by_xpath(
-                '/html/body/div[1]/div[1]/div[1]/div/div[2]/div[4]/div[1]/div[2]/span/span/div/div[1]').click()
+            try:
+                browser.find_element_by_xpath(
+                    '/html/body/div[1]/div[1]/div[1]/div/div[2]/div[4]/div[1]/div[2]/span/span/div/div[1]').click()
+            except NoSuchElementException:
+                browser.find_element_by_xpath(
+                    '/html/body/div[1]/div/div[1]/div/div[2]/div[5]/div[1]/div[2]/span/span/div/div[1]').click()
+
             time.sleep(float(decimal.Decimal(random.randrange(2, 4))))
             browser.find_element_by_xpath(
                 '/html/body/div[1]/div[1]/div[1]/div/div[2]/div[4]/div[2]/div/div/div[1]/div[1]/div/div/div/div/div/div/div[1]/div/div/div[2]/span/a').click()
