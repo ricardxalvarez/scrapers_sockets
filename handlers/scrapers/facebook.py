@@ -11,7 +11,7 @@ import os
 
 load_dotenv()
 
-development = os.environ['development']
+development = bool(os.environ['development'])
 
 
 class Facebook():

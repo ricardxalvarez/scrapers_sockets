@@ -8,7 +8,7 @@ import os
 
 load_dotenv()
 
-development = os.environ['development']
+development = bool(os.environ['development'])
 Payload.max_decode_packets = 500
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'Secret'
