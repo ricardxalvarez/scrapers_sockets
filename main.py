@@ -2,9 +2,13 @@ from flask import Flask, request, session
 from flask_socketio import SocketIO, emit, disconnect
 from handlers.facebook_handler import FacebookHandler
 from handlers.instagram_handler import InstagramHandler
-from handlers.tiktok_handler import TiktokHandler
 from engineio.payload import Payload
+from dotenv import load_dotenv
+import os
 
+load_dotenv()
+
+development = os.environ['development']
 Payload.max_decode_packets = 500
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'Secret'
@@ -24,7 +28,8 @@ def func(data):
     facebook.scrape_friends(data)
     facebook.scrape_followers(data)
     facebook.send_messages(data)
-    facebook.quit()
+    if development == False:
+        facebook.quit()
     print('finished')
 
 
@@ -36,12 +41,9 @@ def func(data):
         instagram.scrape_followers(data)
         instagram.scrape_following(data)
         instagram.send_messages(data)
-        instagram.quit()
+        if development == False:
+            instagram.quit()
     print('finished')
-# @socketio.on('scrape_friends_facebook')
-# def func(data):
-#     facebook = session["facebook"]
-#     facebook.scrape_friends()
 
 
 @socketio.on('validate_auth_instagram')
