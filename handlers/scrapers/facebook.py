@@ -179,6 +179,7 @@ class Facebook():
             time.sleep(float(decimal.Decimal(random.randrange(5, 7))))
         except NoSuchElementException as err:
             print(err)
+            print(development)
             emit("message", {
                  "status": False, "content": "Internal server error, please try again"})
             if development:
