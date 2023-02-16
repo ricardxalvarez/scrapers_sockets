@@ -99,7 +99,7 @@ class Facebook():
             print(err)
             emit("message", {
                  "status": False, "content": "Internal server error, please try again"})
-            if development:
+            if development == False:
                 self.quit()
 
     def scrape_friends(self):
@@ -182,7 +182,7 @@ class Facebook():
             print(development)
             emit("message", {
                  "status": False, "content": "Internal server error, please try again"})
-            if development:
+            if development == False:
                 self.quit()
 
     def scrape_followers(self):
@@ -249,7 +249,7 @@ class Facebook():
             print(err)
             emit("message", {"status": True,
                  "content": "Successfully logged in"})
-            if development:
+            if development == False:
                 self.quit()
 
     def send_messages(self, message_struc: str):
@@ -310,7 +310,7 @@ class Facebook():
             print(err)
             emit("message", {
                  "status": False, "content": "Internal server error, please try again"})
-            if development:
+            if development == False:
                 self.quit()
 
     def quit(self):

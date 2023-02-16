@@ -118,7 +118,7 @@ class Instagram():
             print(err)
             emit("message", {
                  "status": False, "content": "Internal server error, please try again"})
-            if development:
+            if development == False:
                 self.quit()
 
     def validate_auth(self, code):
@@ -277,7 +277,7 @@ class Instagram():
             print(err)
             emit("message", {
                  "status": False, "content": "Internal server error, please try again"})
-            if development:
+            if development == False:
                 self.quit()
 
     def add_users_to_set(self, list: set):
@@ -427,7 +427,8 @@ class Instagram():
             print(err)
             emit("message", {
                  "status": False, "content": "Internal server error, please try again"})
-            self.quit()
+            if development == False:
+                self.quit()
 
     def send_messages(self, message_struc: str):
         try:
@@ -579,7 +580,7 @@ class Instagram():
             print(err)
             emit("message", {
                  "status": False, "content": "Internal server error, please try again"})
-            if development:
+            if development == False:
                 self.quit()
 
     def quit(self):
